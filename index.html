@@ -8,8 +8,11 @@
 <body>
 	<h1>Capitulo 9: Imágenes, medios y elementos de formularios</h1>
 	<p>Estos elementos tienen un comportamiento diferente a otros en la web en cuanto se aplica CSS.</p>
+
 	<h2>Elementos de reemplazo</h2>
 	<p>Se denominan a las imagenes y videos, CSS no puede influir en su aspecto interno; sino solo a su posicion en la página y otros apartados. Tambien son otros elementos que tienen una relacion de aspecto: tamaño definido en ancho (x) y alto (y), por defecto se mostrarán en esta dimensión intrínseca.</p>
+	<p>Algunos ejemplos son: <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/img">img</a>, <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/object">object</a>, <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/video">video</a>. Elementos de formulario como <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/textarea">textarea</a> y <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/input">input</a>. Estos elementos son de reemplazo solo en casos especificos: <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/audio">audio</a>, <a href="https://developer.mozilla.org/es/docs/Web/HTML/Element/canvas">canvas</a>. El elemento <a href="https://developer.mozilla.org/es/docs/Web/CSS/content">content</a> se inserta en el documento desde CSS y se denomina de reemplazo <em>anonimo</em>.</p>
+
 	<h2>Tamaño de las imágenes</h2>
 	<ul>
 		<li>Si tenemos una imágen más pequeña que la caja, la imagen no se va a expandir y quedara espacio en la caja.</li>
@@ -17,25 +20,34 @@
 	</ul>
 	<p>Para solucionar el desbordamiento podemos usar <em>max-width: 100%</em> en el primer escenario la imagen quedará pequeña y en el segundo, la imagen se reducirá. Funciona de  igual forma para los elementos <strong>video</strong> y <strong>iframe</strong>.</p>
 	<p>Para solucionar el espacio en blanco podemos usar la propiedad <strong>object-fit</strong> con el valor <em>cover</em> tiene como caracteritica reducir la imagen para rellenar toda la caja manteniendo su relacion de aspecto (no se deforma). Si usamos el valor <em>contain</em> la imagen se reduce para mostrase completamente aunque dejando espacio en la caja. Si la caja es más pequeña que la imagen, esta queda con un aspecto panoramico. El valor <em>fill</em> rellena la caja pero no mantien su relacion de aspecto.</p>
-	<h2>Elementos de reemplazo en una compaginación</h2>
-	<p>En las tecnicas de diseño avanzadas podemos ver como se comportan las imagenes y los medios. Por ejemplo en un diseño flexible de cuadriculas, las imagenes se ubican al inicio de la pagina (arriba a la izquierda) en cambio los elementos se expanden hasta llenar el area.</p>
+
+	<h2>Elementos de reemplazo en el diseño</h2>
+	<p>En las tecnicas de diseño avanzadas podemos ver como se comportan las imagenes y los medios. Por ejemplo en un diseño flexible o de cuadriculas, los elementos se expanden por defecto hasta que llenan toda el área; las imagenes se ubican al inicio del contenedor (arriba a la izquierda) y no se expanden, en cambio, los elementos se expanden hasta llenar el area.</p>
+	<p>Los elemento de reemplazo mencionados anteriormente, tienen un comportamiento diferente que cualquier elemento de HTML en los metodos de diseño flexible o de cuadrícula.</p>
+	<p>Dado este concepto con respecto a los metodos de diseño, podemos hacer que la imagen se expanda en todo la cuadrícula/contenedor flex con <span>width y height al 100%</span>, pero se deformaría y pierde resolución. No es recomendado.</p>
+
 	<p>Hasta ahora todos los ejemplos fueron de imagenes mas grande que la caja. Pero si la imagen es mas chica y queremos que se adapte por completo a la caja podemos usar <em>widht y height: 100%</em> o usar <em>min-height: 100%</em> pero perderemos definicion en la imagen. La mejor solución en ambos casos es que las imagenes y los medios tengan una resolucion adecuada para lo que necesite la web.</p>
+
 	<h2>Elementos de formulario</h2>
 	<p>Los formularios pueden ser complicados de si queremos diseñar con CSS. El articulo (link) da una explicacion más detallada</p>
 	<p>Los conceptos basicos son: <em>input</em> define campos de formulario de texto, selectores de hora y tambien de colores. El elemento <em>textarea</em> permite un espacio para texto en multilínea. Tambien hay elementos para contener y etiquetar partes de formularios como <em>fieldset</em> y <em>legend</em></p>
 	<p>Html5 permite campos obligatorios o incluso para filtrar contenido a introducir por el usuario, así mismo mostrar un mensaje de error.</p>
+	<p>Mediante un selector de atributos (<span>elemento html [atributo]</span>) podemos dar algo de estilo a los formularios para que sea coherente con nuestro diseño. Le damos bordes, relleno (pading), margin, colores, tamaño, etc.</p>
+
 	<h3>Estilo a elementos de entrada de texto</h3>
-	<p>Como lo son <em>input tipe="email"</em> y <em>textarea</em> son faciles ya que se comportan como cajas. Sin embargo sus estilos prediterminados son diferentes en los OS y los navegadores.</p>
+	<p>Los elementos de entrada de texto, como lo son <em>imput type="text"</em>, <em>input type="email"</em> y <em>textarea</em> son faciles ya que se comportan como cajas. Sin embargo sus estilos prediterminados son diferentes en los OS y los navegadores.</p>
 	<p>Al aplicar estilos debemos dejar en claro que es un formulario. Los datos de entrada mas complejos se veran diferente en los OS siempre debemos suponer que los formularios se verán distintos y probarlos en distintos navegadores.</p>
+
 	<h3>Herencia y elementos del formulario</h3>
-	<p>En algunos navegadores, los elementos o heredan el estilo de letra por defecto. Si queremos que los formularios tengan nuestra fuente del body o de otro elemento principal, debemos agregar a los elementos del formulario: se establece al pricipio del CSS como regla general</p>
+	<p>En algunos navegadores, los elementos no heredan el estilo de letra por defecto. Si queremos que los formularios tengan nuestra fuente del body o de otro elemento principal, debemos agregar a los elementos del formulario: se establece al pricipio del CSS como regla general</p>
 	<ul> <li>button, input, select, textarea {}</li>
 		<li>font-family: inherit;</li>
 		<li>font-size: 100%;</li>
 	</ul>
 	<p>Así heredará la fuente y su tamaño.</p>
+
 	<h3>Elementos de formulario y tamaño de la caja</h3>
-	<p>Como los formularios se presenta distinto en los navegadores, para una experiencia homogénea en cuanto a los anchos y alturas usamos <em>box-sizing</em> y los margenes y el padding lo dejamos en 0.</p>
+	<p>Como los formularios se presentan distinto en los navegadores, para una experiencia homogénea en cuanto a los anchos y alturas usamos <em>box-sizing</em> y los margenes y el padding lo dejamos en 0.</p>
 	<p>Se establece al princio del html como regla general de CSS y despues lo podemos modificar.</p>
 	<ul>
 		<li>button, input, select, textarea {}</li>
@@ -43,8 +55,10 @@
 		<li>padding: 0;</li>
 		<li>margin: 0;</li>
 	</ul>
+
 	<h3>Ajustes útiles</h3>
 	<p>En <em>textarea</em> se agrega <em>overflow: auto;</em> para  que el navegador Internet Explorer no muestre la barra de desplazamiento cuando no hay necesidad.</p>
+
 	<h3>Reinicio del formulario y conclusión</h3>
 	<p>Para concluir, podemos poner estas propiedades juntas al comienzo al comienzo del CSS para reiniciar el formulario así los navegadores no influyen en el resultado final.</p>
 	<ul>
